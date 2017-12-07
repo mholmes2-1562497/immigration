@@ -58,8 +58,8 @@ shinyUI(navbarPage("U.S. Immigration data",
                     choices = list("Criminal" = "criminal", "Non-criminal" = "noncriminal")
         ),
         selectInput("year", "Select year:",
-                     choices = list("2006" = "data.06", "2007" = "data.07", "2008" = "data.08", "2009" = "data.09", "2010" = "data.10", "2011" = "data.11", "2012" = "data.12", 
-                                    "2013" = "data.13", "2014" = "data.14", "2015" = "data.15")
+                     choices = list("2006" = 1, "2007" = 2, "2008" = 3, "2009" = 4, "2010" = 5, "2011" = 6, "2012" = 7, 
+                                    "2013" = 8, "2014" = 9, "2015" = 10)
         ),
         sliderInput("max", "Select maximum amount to display:", 
                      min = 0, max = 100000, value = 100000

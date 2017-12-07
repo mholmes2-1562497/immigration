@@ -11,18 +11,18 @@ source("map-plot.r", local = TRUE)
 shinyServer(function(input, output) {
   # reactive function to determine which year data frame to use (using year.list in R file)
   select.year <- reactive({
-    year.data <- year.list %>% input$year
+    year.data <- data.frame(year.list[as.numeric(input$year)])
     return(year.data)
   })
   output$map <- renderPlotly({
     #renders a different plot based on status 
     if(input$status == "noncriminal") {
       #filters to exlude outliers 
-      select.year(input$year) <- filter(year.data, noncriminal < input$max)
-      MakeNoncrimMap(year.data)
+      final.data <- filter(select.year(), noncriminal < input$max)
+      MakeNoncrimMap(final.data)
     } else {
-      select.year(input$year) <- filter(year.data, criminal < input$max)
-      MakeCrimMap(year.data)
+      final.data <- filter(select.year(), criminal < input$max)
+      MakeCrimMap(final.data)
     }
   })  
 })
