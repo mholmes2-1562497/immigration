@@ -30,7 +30,7 @@ shinyServer(function(input, output) {
     
     
     # Render a barplot
-    barplot(returns[,input$n], cex.names = 1,
+    barplot(returns[,input$n], cex.names = .05,
             main="Immigrants that Returned", 
             ylab="Returned",
             xlab="Years from 2009-2015", col = input$color)
@@ -40,7 +40,7 @@ shinyServer(function(input, output) {
     
     
     # Render a barplot
-    barplot(removes[,input$g], cex.names = 1,
+    barplot(removes[,input$g], cex.names = .05,
             main="Immigrants that was Removed", 
             ylab="Removed",
             xlab="Years from 2009-2015", col = input$color)

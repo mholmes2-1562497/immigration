@@ -10,7 +10,7 @@ setwd("~/Desktop/Info201/Immigration")
 rownames(removes) <- c("2009", "2010", "2011", "2012", "2013", "2014", "2015")
 removes[1, 1] = 250000
 removes[2, 1] = 333567
-removes [3, 1] = 399890
+removes[3, 1] = 399890
 removes[4, 1] = 420033
 removes[5, 1] = 345093
 removes[6, 1] = 322983
@@ -226,6 +226,22 @@ graph.2009 <- plot_ly(data.2009, x = ~Regions, y = ~remove_criminal_2009, type =
   layout(title = "2009 Removal Criminal/Non Criminal and Returned", yaxis = list(title = 'Count'), barmode = 'group')
 returns <- print(WorldPhones)
 removes <- print(WorldPhones)
+rownames(removes) <- c("2009", "2010", "2011", "2012", "2013", "2014", "2015")
+removes[1, 1] = 250000
+removes[2, 1] = 333567
+removes[3, 1] = 399890
+removes[4, 1] = 420033
+removes[5, 1] = 345093
+removes[6, 1] = 322983
+removes[7, 1] = 395402
+
+removes[1, 4] = 12000
+removes[2, 4] = 11837
+removes[3, 4] = 11272
+removes[4, 4] = 11030
+removes[5, 4] = 12320
+removes[6, 4] = 12320
+removes[7, 4] = 11320
 ## 2010 Graph
 
 Regions <- c("Africa", "Asia", "Europe", "North America", "South America")
