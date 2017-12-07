@@ -65,7 +65,7 @@ data.11$total <- as.numeric(gsub(",", "", data.11$total))
 data.11$criminal <- as.numeric(gsub(",", "", data.11$criminal))
 data.11$noncriminal <- as.numeric(gsub(",", "", data.11$noncriminal))
 
-data.12 <- removed.data %>% #2007 data
+data.12 <- removed.data %>% #2012 data
   select(country, X, X.1, X.2, latitude, longitude, code)
 cols <- c("country", "total", "criminal", "noncriminal", "lat", "long", "code")
 colnames(data.12) <- cols
@@ -74,7 +74,7 @@ data.12$total <- as.numeric(gsub(",", "", data.12$total))
 data.12$criminal <- as.numeric(gsub(",", "", data.12$criminal))
 data.12$noncriminal <- as.numeric(gsub(",", "", data.12$noncriminal))
 
-data.13 <- removed.data %>% #2007 data
+data.13 <- removed.data %>% #2013 data
   select(country, X, X.1, X.2, latitude, longitude, code)
 cols <- c("country", "total", "criminal", "noncriminal", "lat", "long", "code")
 colnames(data.13) <- cols
@@ -83,7 +83,7 @@ data.13$total <- as.numeric(gsub(",", "", data.13$total))
 data.13$criminal <- as.numeric(gsub(",", "", data.13$criminal))
 data.13$noncriminal <- as.numeric(gsub(",", "", data.13$noncriminal))
 
-data.14 <- removed.data %>% #2007 data
+data.14 <- removed.data %>% #2014 data
   select(country, X, X.1, X.2, latitude, longitude, code)
 cols <- c("country", "total", "criminal", "noncriminal", "lat", "long", "code")
 colnames(data.14) <- cols
@@ -92,7 +92,7 @@ data.14$total <- as.numeric(gsub(",", "", data.14$total))
 data.14$criminal <- as.numeric(gsub(",", "", data.14$criminal))
 data.14$noncriminal <- as.numeric(gsub(",", "", data.14$noncriminal))
 
-data.15 <- removed.data %>% #2007 data
+data.15 <- removed.data %>% #2015 data
   select(country, X, X.1, X.2, latitude, longitude, code)
 cols <- c("country", "total", "criminal", "noncriminal", "lat", "long", "code")
 colnames(data.15) <- cols
@@ -101,9 +101,11 @@ data.15$total <- as.numeric(gsub(",", "", data.15$total))
 data.15$criminal <- as.numeric(gsub(",", "", data.15$criminal))
 data.15$noncriminal <- as.numeric(gsub(",", "", data.15$noncriminal))
 
-#create map plot 
+#create list of dataframes for all years
+year.list <- list(data.06, data.07, data.08, data.09, data.10, data.11, data.12, data.13, data.14, data.15)
+
 #create map plot for noncriminals
-MakeNoncrimMap <- function(year.data) {
+MakeNoncrimMap <- function(filtered.data) {
   #year <- 
   l.1 <- list(color = toRGB("grey"), width = 0.5)
   
@@ -114,7 +116,7 @@ MakeNoncrimMap <- function(year.data) {
     projection = list(type = 'Mercator')
   )
   
-  noncriminal.map <- plot_geo(year.data) %>%
+  noncriminal.map <- plot_geo(filtered.data) %>%
     add_trace(
       z = ~noncriminal, color = ~noncriminal, colors = 'Blues',
       text = ~country, locations = ~code, marker = list(line = l)
@@ -126,25 +128,26 @@ MakeNoncrimMap <- function(year.data) {
     )
   return(noncriminal.map)
 }
-MakeNoncrimMap(data.06)
 #create map plot for criminals
-l.2 <- list(color = toRGB("grey"), width = 0.5)
-
-# specify map projection/options
-g.2 <- list(
-  showframe = FALSE,
-  showcoastlines = FALSE,
-  projection = list(type = 'Mercator')
-)
-
-p.2 <- plot_geo(data.06) %>%
-  add_trace(
-    z = ~noncriminal, color = ~criminal, colors = 'Reds',
-    text = ~country, locations = ~code, marker = list(line = l)
-  ) %>%
-  colorbar(title = 'total criminal immigrants') %>%
-  layout(
-    title = 'criminal immigrants removed from the US in _______ ',
-    geo = g
+MakeCrimMap <- function(filtered.data) {
+  l.2 <- list(color = toRGB("grey"), width = 0.5)
+  
+  # specify map projection/options
+  g.2 <- list(
+    showframe = FALSE,
+    showcoastlines = FALSE,
+    projection = list(type = 'Mercator')
   )
   
+  p.2 <- plot_geo(filtered.data) %>%
+    add_trace(
+      z = ~noncriminal, color = ~criminal, colors = 'Reds',
+      text = ~country, locations = ~code, marker = list(line = l)
+    ) %>%
+    colorbar(title = 'total criminal immigrants') %>%
+    layout(
+      title = 'criminal immigrants removed from the US in chosen year ',
+      geo = g
+    )
+}
+    

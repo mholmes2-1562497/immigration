@@ -3,10 +3,10 @@ library(shiny)
 library(plotly)
 library(ggplot2)
 library(markdown)
-library(readxl)
+
 setwd("~/Desktop/Info201/Immigration")
-returned <- read_excel("returned.xls")
-removed <- read_excel("removed.xls")
+returned <- read.csv("data/returned.csv", stringsAsFactors = FALSE)
+removed <- read.csv("data/removed.csv", stringsAsFactors = FALSE)
 colnames(removed)[1] <- "region"
 
 

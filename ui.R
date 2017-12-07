@@ -4,26 +4,86 @@ library(plotly)
 library(ggplot2)
 library(markdown)
 
-fluidPage(    
-  
-  # Give the page a title
-  titlePanel("Immigration"),
-  
-  # Generate a row with a sidebar
-  sidebarLayout(      
-    
-    # Define the sidebar with one input
-    sidebarPanel(
-      selectInput(inputId = "dataset",
-                  label = "Choose a dataset:", 
-                  choices=c("graph.2009", "graph.2010", "graph.2011", "graph.2012", "graph.2013", "graph.2014", "graph.2015"))
-    
-    ),
-    
-    # Create a spot for the barplot
-    mainPanel(
-      plotOutput("plot")  
+shinyUI(navbarPage("U.S. Immigration data", 
+  tabPanel("homepage",
+    titlePanel("Introduction"),
+    sidebarLayout(
+      mainPanel(
+        p("Immigration is such an important aspect of American life, it is an instition that affects us all. Through these tough political times, 
+            immigration have become a crucial part of the lives of Americans - both citizens, and immigrants themeslves. The Trump administration 
+            particularly has put a negative connotation on the word 'immigrant'; claiming that immigrants coming into the U.S. (especially from Mexico), 
+            are contributing to the nation's most pressing issues (such as drug epidemics, loss of jobs, more crime, etc). This app is an exploration of
+            analyzing facts through true statistics, and seeing the effects of the current situation on countless individuals seeking the American dream.
+            Using data gathered from the Department of Homeland Security (DHS) and the Bureau of Justice, we have formulated a holistic study of immigration 
+            trends in the U.S., with a specific emphasis on Mexico."
+        ),
+        p("Through our research, we've found that there are different types of statuses immigrants can have. Each of which the Department of Homeland Security
+            had different data sets for:"
+        ), 
+        p(strong("Returned: "), "A returned immigrant is one who has voluntarily returned to their home country after their access into the U.S. has been denied,
+                                or their visa expired. As a returned immigrant they waive their right to a formal proceeding, or in response to a removal proceeding."
+        ),
+        p(strong("Removed: "), "A removed immigrant is one who has been determined as deportable (like a returned immigrant) but has not decided to leave the U.S. 
+                                voluntarily, meaning they could be subject to administrative penalties and may face criminal charges upon re-entry. The DHS data set
+                                on removed immigrants includes numbers on those who did have a criminal record upon removal, and those who did not."
+        ),
+        p(strong("Apprehended: "), "An apprehension is an action taken by law enforcement agency to take physical control of a person. If one individual is apprehended 
+                                    more than once in one given year, it is counted twice in the data set"),
+        p(strong("Determined Inadmissable: "), "An immigrant may be denied access to the U.S. at a port of entry for not meeting criteria for admission. Once given this 
+                                                status, they may be placed in removal proceedings or given the opportunity to withdraw their application.")
+      ),
+      sidebarPanel(
+        helpText("here are some links to our sources:",
+                 br(),
+                 a("Full glossary of terms", 
+                   href = "https://www.dhs.gov/immigration-statistics/data-standards-and-definitions/definition-terms",
+                   target = "_blank"),
+                 br(),
+                 a("Webpage with original datasets from DHS",
+                   href = "https://www.dhs.gov/immigration-statistics/enforcement-actions#",
+                   target = "_blank"),
+                 br(),
+                 a("DHS frequently asked questions",
+                   href = "https://www.dhs.gov/immigration-statistics/FAQs",
+                   target = "_blank")
+        )
+      )
     )
-    
+  ),
+  tabPanel("World map",
+    titlePanel("Mapping removed immigrants based on criminal background"),
+    sidebarLayout(
+      sidebarPanel(
+        selectInput("status", "Select criminal status:", 
+                    choices = list("Criminal" = "criminal", "Non-criminal" = "noncriminal")
+        ),
+        selectInput("year", "Select year:",
+                     choices = list("2006" = "data.06", "2007" = "data.07", "2008" = "data.08", "2009" = "data.09", "2010" = "data.10", "2011" = "data.11", "2012" = "data.12", 
+                                    "2013" = "data.13", "2014" = "data.14", "2015" = "data.15")
+        ),
+        sliderInput("max", "Select maximum amount to display:", 
+                     min = 0, max = 100000, value = 100000
+        ), 
+        helpText("Helps get rid of outliers to look at more minute relationships between countries"
+        )
+      ),
+      mainPanel(
+        plotlyOutput("map")
+      )
+    )
+  ),
+  tabPanel("Returned vs. Removed",
+    titlePanel("Comparing returned immigrants to removed immigrants by region"),
+    sidebarLayout(      
+      sidebarPanel(
+        selectInput(inputId = "dataset",
+                    label = "Choose a dataset:", 
+                    choices=c("graph.2009", "graph.2010", "graph.2011", "graph.2012", "graph.2013", "graph.2014", "graph.2015")
+        )
+      ),
+      mainPanel(
+        plotOutput("region-plot")  
+      )
+    )
   )
-)
+))
