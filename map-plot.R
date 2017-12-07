@@ -101,21 +101,17 @@ data.15$total <- as.numeric(gsub(",", "", data.15$total))
 data.15$criminal <- as.numeric(gsub(",", "", data.15$criminal))
 data.15$noncriminal <- as.numeric(gsub(",", "", data.15$noncriminal))
 
-#create list of dataframes for all years
+#create list of dataframes for all years (used in UI for selecting year)
 year.list <- list(data.06, data.07, data.08, data.09, data.10, data.11, data.12, data.13, data.14, data.15)
 
 #create map plot for noncriminals
 MakeNoncrimMap <- function(filtered.data) {
-  #year <- 
   l.1 <- list(color = toRGB("grey"), width = 0.5)
-  
-  # specify map projection/options
   g.1 <- list(
     showframe = FALSE,
     showcoastlines = FALSE,
     projection = list(type = 'Mercator')
   )
-  
   noncriminal.map <- plot_geo(filtered.data) %>%
     add_trace(
       z = ~noncriminal, color = ~noncriminal, colors = 'Blues',
@@ -131,14 +127,11 @@ MakeNoncrimMap <- function(filtered.data) {
 #create map plot for criminals
 MakeCrimMap <- function(filtered.data) {
   l.2 <- list(color = toRGB("grey"), width = 0.5)
-  
-  # specify map projection/options
   g.2 <- list(
     showframe = FALSE,
     showcoastlines = FALSE,
     projection = list(type = 'Mercator')
   )
-  
   p.2 <- plot_geo(filtered.data) %>%
     add_trace(
       z = ~noncriminal, color = ~criminal, colors = 'Reds',
