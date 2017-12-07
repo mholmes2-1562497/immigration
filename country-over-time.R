@@ -29,7 +29,7 @@ names(filtered.removed) <- c("Country", "2006", "criminal.2006", "noncriminal.20
                                 "2015", "criminal.2015", "noncriminal.2015", "remove1")
 removed <- select(filtered.removed, "Country", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015")
 
-
+ 
 #filters mexico from all the files to have one data frame of all the values for each file
 mexico.removed <- filter(removed, Country == "Mexico")
 mexico.returned <- filter(filtered.returned, Country == "Mexico")

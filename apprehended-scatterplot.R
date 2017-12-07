@@ -1,6 +1,6 @@
 library(dplyr)
 library(ggplot2)
-
+ 
 #read in CSV file for apprehended and determined inadmissible data  
 data.apprehended <- read.csv("data/apprehended.csv", na.strings = c("X", "D", "-"), stringsAsFactors = FALSE)
 data.inadmissible <- read.csv("data/inadmissable.csv", na.strings = c("X", "D", "-"), stringsAsFactors = FALSE)
