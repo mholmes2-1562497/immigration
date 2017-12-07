@@ -115,12 +115,12 @@ MakeNoncrimMap <- function(filtered.data) {
   noncriminal.map <- plot_geo(filtered.data) %>%
     add_trace(
       z = ~noncriminal, color = ~noncriminal, colors = 'Blues',
-      text = ~country, locations = ~code, marker = list(line = l)
+      text = ~country, locations = ~code, marker = list(line = l.1)
     ) %>%
     colorbar(title = 'total noncriminal immigrants') %>%
     layout(
-      title = 'noncriminal immigrants removed from the US in ((selected year))',
-      geo = g
+      title = 'noncriminal immigrants removed from the US in selected year',
+      geo = g.1
     )
   return(noncriminal.map)
 }
@@ -135,12 +135,12 @@ MakeCrimMap <- function(filtered.data) {
   p.2 <- plot_geo(filtered.data) %>%
     add_trace(
       z = ~noncriminal, color = ~criminal, colors = 'Reds',
-      text = ~country, locations = ~code, marker = list(line = l)
+      text = ~country, locations = ~code, marker = list(line = l.2)
     ) %>%
     colorbar(title = 'total criminal immigrants') %>%
     layout(
       title = 'criminal immigrants removed from the US in chosen year ',
-      geo = g
+      geo = g.2
     )
 }
     

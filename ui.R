@@ -68,44 +68,49 @@ shinyUI(navbarPage("U.S. Immigration data",
         )
       ),
       mainPanel(
-        plotlyOutput("map")
+        plotlyOutput("map"),
+        p("All of the datasets are arranged by individual country, thus we wanted to take advantage of this by visualizing the geographic distribution 
+          of immigrants removed from the U.S.. The 'removed' dataset is the only one that differentiates between immigrants who did and did not have a 
+          criminal background, this plot accounts for that difference. You can use the widget to choose precisely which immigrant status to view and analyze. 
+          One very telling observation we made was that of the outliers. Mexico is an incredibly extreme variable, which ofset the entire visualization. 
+          This is why we included the slider to set the maximum number of immigrants to see removed to a given country. This allows us to look at smaller differnces
+          between countries. After removing Mexico from the mix, neighboring Central American countries emerge as the nearest outliers."
+        )
       )
     )
   ),
   tabPanel("Returned",
     titlePanel("Returned Immigrants by Region"),
-    sidebarLayout(      
-      
-      # Define the sidebar with two inputs
-      sidebarPanel(
-        selectInput("n", "Year:", 
-                    choices=colnames(returns)),
-        selectInput('color', label = 'Color', choices = list("Black" = 'black', 'Gold' = 'gold', 'Purple' = 'purple')),
-        
-        hr(),
-        helpText("Data Immigration")        
-      ),
-      mainPanel(
-        plotOutput("returnplot")  
-      )
-    )
-  ),
-  tabPanel("Removed",
-           titlePanel("Removed Immigrants by Region"),
-           sidebarLayout(      
-             
-             # Define the sidebar with two inputs
-             sidebarPanel(
-               selectInput("g", "Year:", 
-                           choices=colnames(removes)),
-               selectInput('color', label = 'Color', choices = list("Black" = 'black', 'Gold' = 'gold', 'Purple' = 'purple')),
-               
-               hr(),
-               helpText("Data Immigration")        
-             ),
-             mainPanel(
-               plotOutput("removeplot")  
-             )
-           )
+     sidebarLayout(
+       #Define the sidebar with two inputs
+       sidebarPanel(
+        selectInput("n", "Year:",
+              choices=colnames(returns)),
+              selectInput('color', label = 'Color', choices = list("Black" = 'black', 'Gold' = 'gold', 'Purple' = 'purple')),
+              br(),
+              helpText("Data Immigration")
+        ),
+       mainPanel(
+         plotOutput("returnplot")
+       )
+     )
+   ),
+   tabPanel("Removed",
+            titlePanel("Removed Immigrants by Region"),
+            sidebarLayout(
+  
+              # Define the sidebar with two inputs
+              sidebarPanel(
+                selectInput("g", "Year:",
+                            choices=colnames(removes)),
+                selectInput('color', label = 'Color', choices = list("Black" = 'black', 'Gold' = 'gold', 'Purple' = 'purple')),
+  
+                hr(),
+                helpText("Data Immigration")
+              ),
+              mainPanel(
+                plotOutput("removeplot")
+              )
+            )
   )
 ))
