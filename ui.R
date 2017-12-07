@@ -72,18 +72,40 @@ shinyUI(navbarPage("U.S. Immigration data",
       )
     )
   ),
-  tabPanel("Returned vs. Removed",
-    titlePanel("Comparing returned immigrants to removed immigrants by region"),
+  tabPanel("Returned",
+    titlePanel("Returned Immigrants by Region"),
     sidebarLayout(      
+      
+      # Define the sidebar with two inputs
       sidebarPanel(
-        selectInput(inputId = "dataset",
-                    label = "Choose a dataset:", 
-                    choices=c("graph.2009", "graph.2010", "graph.2011", "graph.2012", "graph.2013", "graph.2014", "graph.2015")
-        )
+        selectInput("n", "Year:", 
+                    choices=colnames(returns)),
+        selectInput('color', label = 'Color', choices = list("Black" = 'black', 'Gold' = 'gold', 'Purple' = 'purple')),
+        
+        hr(),
+        helpText("Data Immigration")        
       ),
       mainPanel(
-        plotOutput("region-plot")  
+        plotOutput("returnplot")  
       )
     )
+  ),
+  tabPanel("Removed",
+           titlePanel("Removed Immigrants by Region"),
+           sidebarLayout(      
+             
+             # Define the sidebar with two inputs
+             sidebarPanel(
+               selectInput("g", "Year:", 
+                           choices=colnames(removes)),
+               selectInput('color', label = 'Color', choices = list("Black" = 'black', 'Gold' = 'gold', 'Purple' = 'purple')),
+               
+               hr(),
+               helpText("Data Immigration")        
+             ),
+             mainPanel(
+               plotOutput("removeplot")  
+             )
+           )
   )
 ))

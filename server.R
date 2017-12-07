@@ -24,9 +24,31 @@ shinyServer(function(input, output) {
       final.data <- filter(select.year(), criminal < input$max)
       MakeCrimMap(final.data)
     }
-  })  
+  })
+  
+  output$returnplot <- renderPlot({
+    
+    
+    # Render a barplot
+    barplot(returns[,input$n], cex.names = 1,
+            main="Immigrants that Returned", 
+            ylab="Returned",
+            xlab="Years from 2009-2015", col = input$color)
+    
+  })
+  output$removeplot <- renderPlot({
+    
+    
+    # Render a barplot
+    barplot(removes[,input$g], cex.names = 1,
+            main="Immigrants that was Removed", 
+            ylab="Removed",
+            xlab="Years from 2009-2015", col = input$color)
+    
+  })
+  
 })
   
-  
+ 
   
 
