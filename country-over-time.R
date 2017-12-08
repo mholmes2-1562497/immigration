@@ -26,7 +26,7 @@ names(filtered.removed) <- c("Country", "2006", "criminal.2006", "noncriminal.20
                                "2008", "criminal.2008", "noncriminal.2008", "2009", "criminal.2009", "noncriminal.2009", "2010", 
                                "criminal.2010", "noncriminal.2010", "2011", "criminal.2011", "noncriminal.2011", "2012", "criminal.2012",
                                 "noncriminal.2012", "2013", "criminal.2013", "noncriminal.2013", "2014", "criminal.2014", "noncriminal.2014", 
-                                "2015", "criminal.2015", "noncriminal.2015", "remove1")
+                                "2015", "criminal.2015", "noncriminal.2015")
 removed <- select(filtered.removed, "Country", "2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015")
 
  

@@ -4,7 +4,6 @@ library(plotly)
 library(ggplot2)
 library(markdown)
 library(datasets)
-setwd("~/Desktop/Info201/Immigration")
 
 rownames(removes) <- c("2009", "2010", "2011", "2012", "2013", "2014", "2015")
 removes[1, 1] = 250000

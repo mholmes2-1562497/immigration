@@ -1,0 +1,13 @@
+name: immigration
+title: immigration
+username:
+account: mholmes2
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 246018
+bundleId: 1121972
+url: https://mholmes2.shinyapps.io/immigration/
+when: 1512682817.07396
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .Rapp.history|information.r|removed.xls|returned.xls|data/removed.csv|data/returned.csv
