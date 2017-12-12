@@ -3,6 +3,10 @@ library(shiny)
 library(plotly)
 library(ggplot2)
 library(markdown)
+library(bubbles)
+devtools::install_github("jcheng5/bubbles", force = TRUE)
+
+#bubblesOutput(outputId, width = "600px", height = "600px")
 
 shinyUI(navbarPage("U.S. Immigration data", 
   tabPanel("homepage",
@@ -85,5 +89,33 @@ shinyUI(navbarPage("U.S. Immigration data",
         plotOutput("region-plot")  
       )
     )
+  ),
+  tabPanel("Immigrants as criminals?",
+           titlePanel("Comparing returned immigrants to removed immigrants by region"),
+           sidebarLayout(
+             sidebarPanel(
+               selectInput(inputId= "years", 
+                           label= "Which Year", 
+                           choices = list(
+                                 "2006" = "2006", 
+                                   "2007" = "2007",
+                                    "2008" = "2008",
+                                     "2009" = "2009",
+                                       "2010" = "2010"
+                           ) 
+              )),
+             mainPanel(
+               p("Many believe that everyone apprehended is a criminal however, not all immigrants who are apprehended are criminals! Here is a ratio of who 
+                 has really been convicted (whether it be from a drug conviction or simply not turning in their paper work on time)."
+               ), 
+               p("Click on a year and below you'll see that among the 1000 of immigrants who are appreheneded(green), how many are actually arrested for a crime(blue)."
+               ),
+               
+              
+               bubblesOutput("bubbles", width = "100%", height = "100%")
+             )
+           
+           )
   )
-))
+)
+)

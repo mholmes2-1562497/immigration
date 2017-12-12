@@ -4,7 +4,7 @@ library(plotly)
 library(ggplot2)
 library(markdown)
 
-setwd("~/Desktop/Info201/Immigration")
+setwd("~/Info201/Immigration")
 returned <- read.csv("data/returned.csv", stringsAsFactors = FALSE)
 removed <- read.csv("data/removed.csv", stringsAsFactors = FALSE)
 colnames(removed)[1] <- "region"

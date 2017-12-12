@@ -65,12 +65,8 @@ bubble.frame$Hit[sample] <- "blue"
 
 bubbles(value = sample(10), label=" ", key = , tooltip = "One out of A Thousand", color = bubble.frame$Hit,
         textColor = "#333333", width = NULL, height = NULL)
+
+
   
 }
-
-# bubblesOutput(outputId, width = "600px", height = "600px")
-# 
-# renderBubbles(expr, env = parent.frame(), quoted = FALSE)
-# 
-
 
