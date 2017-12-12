@@ -7,21 +7,16 @@ library(datasets)
 library(bubbles)
 devtools::install_github("jcheng5/bubbles", force = TRUE)
 
-# source("information.r", local = TRUE)
-# source("map-plot.r", local = TRUE)
-source("usinfo.r", local = TRUE)
-
 renderBubbles(expr, env = parent.frame(), quoted = FALSE)
 
-<<<<<<< HEAD
-=======
+
 # source("information.r", local = TRUE)
 source("./map-plot.r", local = TRUE)
 source("./apprehended-scatterplot.R", local = TRUE)
 source("./country-over-time.R", local = TRUE)
->>>>>>> 129161f28d8a24c8e38470525d6c80b18b4cddf0
 
-shinyServer(function(input, output) {
+
+shinyServer(function(input, output){
   # reactive function to determine which year data frame to use (using year.list in R file)
   select.year <- reactive({
     year.data <- data.frame(year.list[as.numeric(input$year)])
@@ -37,22 +32,18 @@ shinyServer(function(input, output) {
       final.data <- filter(select.year(), criminal < input$max)
       MakeCrimMap(final.data)
     }
-<<<<<<< HEAD
+
   }) 
   
   
   output$bubbles <- renderBubbles({
-    
    
-    
-    at <- as.numeric(input$years)
-    
+     at <- as.numeric(input$years)
     ims <- filter(immigrant, Year == at)
-
-    
     ims<- gather(ims,"Reason","Amount", 1:7) %>% 
       filter(Reason == "Ratio")
     
+    #create size
     n<-1000
     random<-1:n
     ratio<- as.numeric(ims$Amount)*n
@@ -73,32 +64,27 @@ shinyServer(function(input, output) {
     
     
   })
-
   
-=======
->>>>>>> 129161f28d8a24c8e38470525d6c80b18b4cddf0
-  })
-  
-  # output$returnplot <- renderPlot({
-  #   
-  #   
-  #   # Render a barplot
-  #   barplot(returns[,input$n], cex.names = .05,
-  #           main="Immigrants that Returned", 
-  #           ylab="Returned",
-  #           xlab="Years from 2009-2015", col = input$color)
-  #   
-  # })
-  # output$removeplot <- renderPlot({
-  #   
-  #   
-  #   # Render a barplot
-  #   barplot(removes[,input$g], cex.names = .05,
-  #           main="Immigrants that was Removed", 
-  #           ylab="Removed",
-  #           xlab="Years from 2009-2015", col = input$color)
-  #   
-  # })
+   # output$returnplot <- renderPlot({
+   #   
+   #   
+   #   # Render a barplot
+   #   barplot(returns[,input$n], cex.names = .05,
+   #         main="Immigrants that Returned", 
+   #           ylab="Returned",
+   #         xlab="Years from 2009-2015", col = input$color)
+   #   
+   # })
+   # output$removeplot <- renderPlot({
+   #   
+   #   
+   #   # Render a barplot
+   #   barplot(removes[,input$g], cex.names = .05,
+   #           main="Immigrants that was Removed", 
+   #           ylab="Removed",
+   #           xlab="Years from 2009-2015", col = input$color)
+   #   
+   # })
 
   #graphs top 50 apprehended countries
   output$graph_Apprehended <- renderPlot({
@@ -130,8 +116,8 @@ shinyServer(function(input, output) {
                             labels = c("Removed", "Returned", "Apprehended", "Inadmissible"))
     return(plot.data)
   })
-})
+
   
- 
+ })
   
 

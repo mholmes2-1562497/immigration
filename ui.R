@@ -3,16 +3,14 @@ library(shiny)
 library(plotly)
 library(ggplot2)
 library(markdown)
-<<<<<<< HEAD
 library(bubbles)
 devtools::install_github("jcheng5/bubbles", force = TRUE)
 
-#bubblesOutput(outputId, width = "600px", height = "600px")
-=======
+
 source("./apprehended-scatterplot.R", local = TRUE)
 source("./country-over-time.R", local = TRUE)
 source("./map-plot.r", local = TRUE)
->>>>>>> 129161f28d8a24c8e38470525d6c80b18b4cddf0
+source("./usinfo.r", local = TRUE)
 
 shinyUI(navbarPage("U.S. Immigration data", 
   tabPanel("homepage",
@@ -89,7 +87,6 @@ shinyUI(navbarPage("U.S. Immigration data",
       )
     )
   ),
-<<<<<<< HEAD
   tabPanel("Immigrants as criminals?",
            titlePanel("Comparing returned immigrants to removed immigrants by region"),
            sidebarLayout(
@@ -114,42 +111,43 @@ shinyUI(navbarPage("U.S. Immigration data",
               
                bubblesOutput("bubbles", width = "100%", height = "100%")
              )
-           
-=======
+           )
+  ),
+
   # tabPanel("Returned",
-  #   titlePanel("Returned Immigrants by Region"),
-  #    sidebarLayout(
-  #      #Define the sidebar with two inputs
-  #      sidebarPanel(
-  #       selectInput("n", "Year:",
-  #             choices=colnames(returns)),
+  #    titlePanel("Returned Immigrants by Region"),
+  #     sidebarLayout(
+  #       #Define the sidebar with two inputs
+  #       sidebarPanel(
+  #        selectInput("n", "Year:",
+  #              choices=colnames(returns)),
   #             selectInput('color', label = 'Color', choices = list("Black" = 'black', 'Gold' = 'gold', 'Purple' = 'purple')),
-  #             br(),
-  #             helpText("Data Immigration")
-  #       ),
-  #      mainPanel(
-  #        plotOutput("returnplot")
+  #              br(),
+  #              helpText("Data Immigration")
+  #      ),
+  #       mainPanel(
+  #         plotOutput("returnplot")
   #      )
-  #    )
-  #  ),
-  #  tabPanel("Removed",
-  #           titlePanel("Removed Immigrants by Region"),
-  #           sidebarLayout(
-  # 
-  #             # Define the sidebar with two inputs
-  #             sidebarPanel(
-  #               selectInput("g", "Year:",
-  #                           choices=colnames(removes)),
-  #               selectInput('color', label = 'Color', choices = list("Black" = 'black', 'Gold' = 'gold', 'Purple' = 'purple')),
-  # 
-  #               hr(),
-  #               helpText("Data Immigration")
-  #             ),
-  #             mainPanel(
-  #               plotOutput("removeplot")
-  #             )
-  #           )
-  # ), 
+  #     )
+  #   ),
+  #   tabPanel("Removed",
+  #            titlePanel("Removed Immigrants by Region"),
+  #            sidebarLayout(
+  #  
+  #            # Define the sidebar with two inputs
+  #              sidebarPanel(
+  #                selectInput("g", "Year:",
+  #                            choices=colnames(removes)),
+  #                selectInput('color', label = 'Color', choices = list("Black" = 'black', 'Gold' = 'gold', 'Purple' = 'purple')),
+  #  
+  #                hr(),
+  #                helpText("Data Immigration")
+  #              ),
+  #              mainPanel(
+  #                plotOutput("removeplot")
+  #              )
+  #            )
+  #  ), 
   
   tabPanel('Apprehended and Inadmissible Data',
            titlePanel('Apprehended and Determined Inadmissible Data'),
@@ -194,8 +192,9 @@ shinyUI(navbarPage("U.S. Immigration data",
              mainPanel(
                plotOutput('graph') 
              )
->>>>>>> 129161f28d8a24c8e38470525d6c80b18b4cddf0
+
            )
   )
 )
 )
+
