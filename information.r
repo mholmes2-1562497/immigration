@@ -3,14 +3,58 @@ library(shiny)
 library(plotly)
 library(ggplot2)
 library(markdown)
+library(datasets)
 
+rownames(removes) <- c("2009", "2010", "2011", "2012", "2013", "2014", "2015")
+removes[1, 1] = 250000
+removes[2, 1] = 333567
+removes[3, 1] = 399890
+removes[4, 1] = 420033
+removes[5, 1] = 345093
+removes[6, 1] = 322983
+removes[7, 1] = 395402
+
+removes[1, 4] = 12000
+removes[2, 4] = 11837
+removes[3, 4] = 11272
+removes[4, 4] = 11030
+removes[5, 4] = 12320
+removes[6, 4] = 12320
+removes[7, 4] = 11320
+
+
+
+
+rownames(returns) <- c("2009", "2010", "2011", "2012", "2013", "2014", "2015")
+return <- read.csv("~/Desktop/Info201/immigration/data/returned.csv", stringsAsFactors = FALSE)
+remove <- read.csv("~/Desktop/Info201/immigration/data/removed.csv", stringsAsFactors = FALSE)
+
+
+return.updated2 <- return[-c(10),]
+return.updated <- return.updated2[c(6:10),]
+
+names(return.updated) <- c("Regions", "2009", "2010", "2011", "2012", "2013","2014", "2015")
+
+
+remove.updated2 <- remove[-c(11),]
+remove.updated <- remove.updated2[c(7:11),]
+return.updated.year <- select(return.updated,"2009","2010","2011", "2012","2013","2014","2015")
+
+remove.updated.year <- select(remove.updated,"X.9", "X.12","X.15","X.18","X.21","X.24","X.27")
+names(remove.updated.year) <- c("2009", "2010", "2011", "2012", "2013", "2014", "2015")
+
+
+
+
+<<<<<<< HEAD
 setwd("~/Info201/Immigration")
 returned <- read.csv("data/returned.csv", stringsAsFactors = FALSE)
 removed <- read.csv("data/removed.csv", stringsAsFactors = FALSE)
 colnames(removed)[1] <- "region"
+=======
+>>>>>>> 129161f28d8a24c8e38470525d6c80b18b4cddf0
 
 
-removed.updated <- removed[c(3:12),]
 
 ##2009 Removed
 africa.criminal.2009 <- 718
@@ -185,7 +229,24 @@ graph.2009 <- plot_ly(data.2009, x = ~Regions, y = ~remove_criminal_2009, type =
   add_trace(y = ~return_2009, name = 'Returned') %>%
   add_trace(y = ~remove_noncriminal_2009, name = 'Removed_NonCriminals') %>%
   layout(title = "2009 Removal Criminal/Non Criminal and Returned", yaxis = list(title = 'Count'), barmode = 'group')
+returns <- print(WorldPhones)
+removes <- print(WorldPhones)
+rownames(removes) <- c("2009", "2010", "2011", "2012", "2013", "2014", "2015")
+removes[1, 1] = 250000
+removes[2, 1] = 333567
+removes[3, 1] = 399890
+removes[4, 1] = 420033
+removes[5, 1] = 345093
+removes[6, 1] = 322983
+removes[7, 1] = 395402
 
+removes[1, 4] = 12000
+removes[2, 4] = 11837
+removes[3, 4] = 11272
+removes[4, 4] = 11030
+removes[5, 4] = 12320
+removes[6, 4] = 12320
+removes[7, 4] = 11320
 ## 2010 Graph
 
 Regions <- c("Africa", "Asia", "Europe", "North America", "South America")

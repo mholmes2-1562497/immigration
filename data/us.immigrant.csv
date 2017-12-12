@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Bureau of Justice Statistics,,,
 Filename: iofjs10f27.csv,,,
 "Figure 27. Noncitizens incarcerated in federal prison, by offense type, 1985–2010",,,
@@ -36,3 +37,43 @@ Fiscal year,Drug,Immigration,Other
 2010,"22,230","20,380","4,959"
 Note: Includes commitments to federal prison for federal law violations. Commitments from D.C. Superior Court are excluded.,,,
 "Source: Bureau of Prisons, SENTRY data file, fiscal year.",,,
+=======
+Bureau of Justice Statistics,,,
+Filename: iofjs10f27.csv,,,
+"Figure 27. Noncitizens incarcerated in federal prison, by offense type, 1985–2010",,,
+"Report title: Immigration Offenders in the Federal Justice System, 2010  NCJ 238581",,,
+"Author: Mark Motivans, Ph.D.",,,
+Refer questions to askbjs@usdoj.gov or 202-307-0765,,,
+"Date of version: July 5,  2012",,,
+,,,
+"Figure 27. Noncitizens incarcerated in federal prison, by offense type, 1985–2010",,,
+Fiscal year,Drug,Immigration,Other
+1985,"3,111","1,275","1,175"
+1986,"4,099","1,469","1,398"
+1987,"4,978","1,345","1,528"
+1988,"5,948","1,363","1,560"
+1989,"7,647","1,542","1,469"
+1990,"9,284","1,515","1,550"
+1991,"10,817","1,549","1,680"
+1992,"12,706","1,568","1,843"
+1993,"14,012","2,118","2,088"
+1994,"14,226","2,478","2,225"
+1995,"15,705","3,362","3,641"
+1996,"16,407","4,411","3,456"
+1997,"17,254","5,355","3,862"
+1998,"17,288","7,251","3,503"
+1999,"18,573","9,859","3,979"
+2000,"20,146","13,162","3,240"
+2001,"20,732","14,419","3,776"
+2002,"21,272","15,001","3,778"
+2003,"22,201","16,123","3,908"
+2004,"21,694","17,294","3,815"
+2005,"21,727","18,696","3,900"
+2006,"22,247","18,355","4,132"
+2007,"22,774","18,621","4,361"
+2008,"22,712","18,739","5,015"
+2009,"22,907","20,884","4,979"
+2010,"22,230","20,380","4,959"
+Note: Includes commitments to federal prison for federal law violations. Commitments from D.C. Superior Court are excluded.,,,
+"Source: Bureau of Prisons, SENTRY data file, fiscal year.",,,
+>>>>>>> 129161f28d8a24c8e38470525d6c80b18b4cddf0
